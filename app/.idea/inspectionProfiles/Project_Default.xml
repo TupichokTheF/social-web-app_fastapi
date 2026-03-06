@@ -1,0 +1,91 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyAsyncCallInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="booktype" />
+          <option value="pika" />
+          <option value="annotated-doc" />
+          <option value="annotated-types" />
+          <option value="anyio" />
+          <option value="asyncpg" />
+          <option value="bcrypt" />
+          <option value="certifi" />
+          <option value="click" />
+          <option value="dnspython" />
+          <option value="email-validator" />
+          <option value="fastapi" />
+          <option value="fastapi-cli" />
+          <option value="fastapi-cloud-cli" />
+          <option value="fastar" />
+          <option value="greenlet" />
+          <option value="h11" />
+          <option value="httpcore" />
+          <option value="httptools" />
+          <option value="httpx" />
+          <option value="idna" />
+          <option value="Jinja2" />
+          <option value="markdown-it-py" />
+          <option value="MarkupSafe" />
+          <option value="mdurl" />
+          <option value="psycopg2-binary" />
+          <option value="pydantic" />
+          <option value="pydantic-extra-types" />
+          <option value="pydantic-settings" />
+          <option value="pydantic_core" />
+          <option value="Pygments" />
+          <option value="PyJWT" />
+          <option value="python-dotenv" />
+          <option value="python-multipart" />
+          <option value="PyYAML" />
+          <option value="redis" />
+          <option value="rich" />
+          <option value="rich-toolkit" />
+          <option value="rignore" />
+          <option value="sentry-sdk" />
+          <option value="shellingham" />
+          <option value="SQLAlchemy" />
+          <option value="starlette" />
+          <option value="tree-format" />
+          <option value="typer" />
+          <option value="typing-inspection" />
+          <option value="typing_extensions" />
+          <option value="urllib3" />
+          <option value="uvicorn" />
+          <option value="uvloop" />
+          <option value="watchfiles" />
+          <option value="websockets" />
+          <option value="asgiref" />
+          <option value="async-generator" />
+          <option value="attrs" />
+          <option value="bleach" />
+          <option value="Django" />
+          <option value="django-cors-headers" />
+          <option value="djangorestframework" />
+          <option value="djangorestframework_simplejwt" />
+          <option value="drf-api-logger" />
+          <option value="importlib_metadata" />
+          <option value="mypy_extensions" />
+          <option value="outcome" />
+          <option value="packaging" />
+          <option value="PySocks" />
+          <option value="selenium" />
+          <option value="sniffio" />
+          <option value="sortedcontainers" />
+          <option value="sqlparse" />
+          <option value="trio" />
+          <option value="trio-typing" />
+          <option value="trio-websocket" />
+          <option value="types-certifi" />
+          <option value="types-urllib3" />
+          <option value="webencodings" />
+          <option value="websocket-client" />
+          <option value="wsproto" />
+          <option value="zipp" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
