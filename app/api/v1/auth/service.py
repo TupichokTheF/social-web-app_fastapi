@@ -42,7 +42,6 @@ class AuthService:
         try:
             return await self._repository.create_user(user_)
         except Exception as e:
-            print(e)
             raise e
 
     async def logout(self, refresh_token: str):

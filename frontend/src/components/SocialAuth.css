@@ -1,0 +1,14 @@
+.social-auth {
+  width: 100%;
+}
+
+.social-button {
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  color: var(--color-text) !important;
+  gap: 10px;
+}
+
+.social-button svg {
+  flex-shrink: 0;
+}

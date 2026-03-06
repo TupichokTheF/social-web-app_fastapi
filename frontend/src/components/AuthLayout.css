@@ -1,0 +1,59 @@
+.auth-layout {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+/* Grain texture overlay */
+.auth-grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.035;
+}
+
+.auth-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  padding: 44px 48px;
+  background: var(--color-card);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .auth-card {
+    max-width: 90%;
+    padding: 40px 36px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .auth-layout {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .auth-card {
+    max-width: 100%;
+    min-height: 100svh;
+    padding: 48px 24px 32px;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
