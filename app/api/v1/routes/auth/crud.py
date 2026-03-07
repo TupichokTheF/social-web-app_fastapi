@@ -19,7 +19,7 @@ class UserRepository:
         return res.scalars().first()
 
     async def create_user(self, user_: UserRegistration):
-        user_.password = get_password_hash(user_.password)
+        user_.password_hash = get_password_hash(user_.password_hash)
         user = User(**user_.model_dump())
         self._session.add(user)
         await self._session.commit()

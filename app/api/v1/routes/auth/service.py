@@ -1,3 +1,5 @@
+from sqlalchemy.exc import IntegrityError
+
 from fastapi import Depends
 from typing import Annotated
 
@@ -8,6 +10,7 @@ from core.settings import settings
 from .crud import UserRepoDep
 from .security import verify_password
 from .schemas import UserAuthentication, UserRegistration
+from .exceptions import WrongEmail
 from database import RedisDep
 
 class AuthService:
@@ -22,7 +25,7 @@ class AuthService:
         user = await self._repository.get_user_by_email(user_.email)
         if not user:
             return False
-        if not verify_password(user_.password, user.password):
+        if not verify_password(user_.password_hash, user.password_hash):
             return False
         return user
 
@@ -41,10 +44,13 @@ class AuthService:
     async def create_user(self, user_: UserRegistration):
         try:
             return await self._repository.create_user(user_)
-        except Exception as e:
-            raise e
+        except IntegrityError:
+            raise WrongEmail(user_.email)
 
     async def logout(self, refresh_token: str):
-        self._redis.delete(f"refresh_token:{refresh_token}")
+        return self._redis.delete(f"refresh_token:{refresh_token}")
+
+    async def get_email_by_refresh_token(self, refresh_token: str):
+        return self._redis.get(f"refresh_token:{refresh_token}")
 
 AuthServiceDepends = Annotated[AuthService, Depends(AuthService)]

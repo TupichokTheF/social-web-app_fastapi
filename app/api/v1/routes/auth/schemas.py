@@ -1,17 +1,21 @@
 from pydantic import BaseModel, field_validator, ConfigDict
+from typing import TypeVar
+
+T = TypeVar('T')
 
 class UserBase(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     email: str
+    username: str
 
 class UserAuthentication(UserBase):
-    password: str
+    password_hash: str
 
 class UserRegistration(UserBase):
-    password: str
+    password_hash: str
 
-    @field_validator('password')
+    @field_validator('password_hash')
     @classmethod
     def validate_password(cls, password_: str):
         if password_.upper() == password_:
@@ -26,3 +30,8 @@ class UserRegistration(UserBase):
 class TokenBase(BaseModel):
     access_token: str
     token_type: str
+
+
+class BaseResponse[T](BaseModel):
+    status: bool = True
+    detail: T | None = None

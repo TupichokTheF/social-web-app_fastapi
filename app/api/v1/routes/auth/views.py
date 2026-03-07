@@ -1,12 +1,12 @@
-from fastapi import APIRouter, Body, Depends, HTTPException, status, Response
+from fastapi import APIRouter, HTTPException, status, Response, Cookie
 
 from .service import AuthServiceDepends
-from .schemas import UserAuthentication, TokenBase, UserRegistration
+from .schemas import UserAuthentication, TokenBase, UserRegistration, BaseResponse
+from .exceptions import WrongEmail
 
 auth_router = APIRouter(
     prefix="/auth",
     tags=["Authentication operations"],
-    dependencies=[]
 )
 
 @auth_router.post("/signin", response_model=TokenBase)
@@ -30,14 +30,20 @@ async def login_user(service: AuthServiceDepends, user_: UserAuthentication, res
     return TokenBase(access_token=access_token, token_type="bearer")
 
 
-@auth_router.post("/signup")
+@auth_router.post("/signup", response_model=BaseResponse)
 async def signup_user(service: AuthServiceDepends, user_: UserRegistration):
     try:
-        return await service.create_user(user_)
-    except:
+        await service.create_user(user_)
+        return BaseResponse(detail="User was created successfully")
+    except WrongEmail as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Email address already exist"
+            detail=str(e)
         )
 
+
+@auth_router.post("/logout", response_model=BaseResponse)
+async def logout_user(service: AuthServiceDepends, refresh_token = Cookie()):
+    await service.logout(refresh_token)
+    return BaseResponse(detail="User was logged out")
 
